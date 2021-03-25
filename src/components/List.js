@@ -1,22 +1,24 @@
 import React, { Component } from 'react'
+import TodoItem from './TodoItem'
 
 export default class List extends Component {
     render() {
         return (
-            <ol>
+            <div>
                 {
-                    this.props.todos.map((todo, index) => {
+                    this.props.todos.map((todo) => {
                         return (
-                            <li 
-                                key={todo.id}
-                                onClick={() => this.props.removeTodo(todo.id)}
-                            >
-                                {todo.text}
-                            </li>
+                            <TodoItem key={todo.id} todo={todo} removeTodo={id => this.props.removeTodo(id)}/>
+                            // <li 
+                                
+                            //     onClick={() => this.props.removeTodo(todo.id)}
+                            // >
+                            //     {todo.text}
+                            // </li>
                         )
                     })
                 }
-            </ol>
+            </div>
         )
     }
 }

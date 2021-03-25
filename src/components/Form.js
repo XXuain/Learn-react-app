@@ -4,18 +4,30 @@ export default class Form extends Component {
     constructor() {
         super()
         this.state = {
-            text: 'over school'
+            text: ''
         }
-        this.createTodo() = this.createTodo.bind(this)
+        this.createTodo = this.createTodo.bind(this)
     }
     createTodo() {
-        this.props.createTodo(this.state.text)
+        if(this.state.text) {
+            this.props.createTodo(this.state.text)
+            this.setState({ text: '' })
+        }
+    }
+    handlerChange(e) {
+        this.setState({ text: e.target.value })
+    }
+    handlerKeyDown(e) {
+        e.keyCode === 13 && this.createTodo()
     }
     render() {
-        console.log(this.props);
         return (
             <div>
-                <input />
+                <input 
+                    onChange={e => this.handlerChange(e)}
+                    onKeyDown={e => this.handlerKeyDown(e)}
+                    value={this.state.text}
+                />
                 {/* <button
                     onClick={()=> this.props.createTodo(this.state.text)}
                 >新增</button> */}

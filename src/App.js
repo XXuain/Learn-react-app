@@ -7,24 +7,36 @@ class App extends Component {
 
   constructor() {
     super();
-    let list = ['買牛奶', '繳電話費', '去銀行'];
+    let list = [
+      {id: 0, text: '買牛奶'},
+      {id: 1, text: '繳電話費'},
+      {id: 2, text: '去銀行'},
+    ];
     this.state = {
       todos: list,
+      startId: 3
     }
   }
-
-  
-createTodo(text) {
-  this.setState({
-    todos: [...this.state.todos, text]
-  })
-}
+  createTodo(text) {
+    this.setState({
+      todos: [...this.state.todos, {
+        id: this.state.startId,
+        text
+      }],
+      startId: this.state.startId + 1
+    })
+  }
+  removeTodo(id) {
+    this.setState({
+      todos: this.state.todos.filter(todo => id !== todo.id)
+    })
+  }
   render() {
     return (
       <div>
           <Title todos={this.state.todos}/>
           <Form createTodo={text=>this.createTodo(text)}/>
-          <List todos={this.state.todos}/>
+          <List todos={this.state.todos} removeTodo={ text => this.removeTodo(text) }/>
       </div>
     );
   }

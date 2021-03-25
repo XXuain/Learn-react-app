@@ -7,7 +7,12 @@ export default class List extends Component {
                 {
                     this.props.todos.map((todo, index) => {
                         return (
-                            <li key={index}>{todo}</li>
+                            <li 
+                                key={todo.id}
+                                onClick={() => this.props.removeTodo(todo.id)}
+                            >
+                                {todo.text}
+                            </li>
                         )
                     })
                 }

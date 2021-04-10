@@ -4,10 +4,6 @@ import CreateTodo from './CreateTodo';
 import TodoList from './TodoList';
 
 class GroupTabContent extends Component {
-
-  constructor() {
-    super();  
-  }
   createTodo(newtodo) {
     this.props.createTodo && 
       this.props.createTodo(newtodo, this.props.groupid);

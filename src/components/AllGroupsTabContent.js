@@ -3,12 +3,6 @@ import Title from './Title';
 import TodoList from './TodoList';
 
 class AllGroupsTabContent extends Component {
-
-  constructor() {
-    super();
-  }
-
-
   render() {
     return (
       <div>
@@ -23,4 +17,3 @@ class AllGroupsTabContent extends Component {
 }
 
 export default AllGroupsTabContent;
- 

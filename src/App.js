@@ -53,7 +53,7 @@ class App extends Component {
 
   removeTodo(removingtodo) {
     const newtodos = this.state.todos.filter((todo, index) => {
-      return !(todo.groupid == removingtodo.groupid &&
+      return !(todo.groupid === removingtodo.groupid &&
         removingtodo.text === todo.text)
     });
     this.setState({

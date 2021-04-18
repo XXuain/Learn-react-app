@@ -1,21 +1,29 @@
 {
-  "name": "todolist",
+  "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-router-dom": "^4.1.2",
-    "react-scripts": "1.0.11",
-    "react-redux": "^6.0.0",
-    "redux": "^4.0.1",
-    "styled-components": "^2.1.2"
+    "@apollo/client": "^3.3.15",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "graphql": "^15.5.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [

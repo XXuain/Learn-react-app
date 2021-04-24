@@ -1,6 +1,6 @@
 import React from 'react';
 import { useApolloClient, useMutation } from '@apollo/client';
-import { GET_TODOS, ADD_TODO } from '../graphql/todos';
+import { GET_TODOS, ADD_TODO } from '../services/todos';
 
 function AddTodoFun() {
   const client = useApolloClient();

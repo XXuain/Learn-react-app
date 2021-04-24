@@ -1,6 +1,6 @@
 import React from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import { GET_TODOS, UPDATE_TODO } from '../graphql/todos';
+import { GET_TODOS, UPDATE_TODO } from '../services/todos';
 
 function Todos() {
   //networkStatus

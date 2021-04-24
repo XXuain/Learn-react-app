@@ -1,5 +1,5 @@
 import React from 'react';
-import { CusApolloProvider } from './plugin/apollo';
+import CusApolloProvider from './plugin/apollo';
 
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';

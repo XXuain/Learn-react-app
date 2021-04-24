@@ -32,5 +32,4 @@ const CusApolloProvider = ({ children, ...props }) => {
   );
 };
 
-// export default cusApolloProvide;
-export { CusApolloProvider };
+export default CusApolloProvider;

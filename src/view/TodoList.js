@@ -4,7 +4,7 @@ import AddTodo from '../components/AddTodo';
 const TodoList = () => {
   return (
     <>
-      <h2>Building Mutation components 🚀</h2>
+      <h1>Building Mutation components 🚀</h1>
       <AddTodo />
       <Todos />
     </>

@@ -4,6 +4,8 @@ import TodoList from './view/TodoList';
 import Context from './view/Context';
 import Reducer from './view/Reducer';
 import Counter from './view/Counter';
+import Hook from './view/Hook';
+
 import { Provider as ReduxProvider } from 'react-redux';
 
 import configureAppStore from './store';
@@ -16,6 +18,7 @@ const App = () => (
       <Context />
       <Reducer />
       <Counter />
+      <Hook />
     </CusApolloProvider>
   </ReduxProvider>
 );

@@ -4,9 +4,7 @@
 
 [> useState 狀態管理](https://github.com/XXuain/react-graphQL-todoList/tree/main/src/view/Hook#usestate-%E7%8B%80%E6%85%8B%E7%AE%A1%E7%90%86)
 
-[> useEffect 副作用管理]
-
-## React Hooks 解決的問題
+[> useEffect 副作用管理](https://github.com/XXuain/react-graphQL-todoList/tree/main/src/view/Hook#useeffect-%E5%89%AF%E4%BD%9C%E7%94%A8%E7%AE%A1%E7%90%86)
 
 ## useState 狀態管理
 
@@ -120,7 +118,7 @@ const [updateCount, setUpdateCount] = useState(5);
 ## useEffect 副作用管理
 
 任何會產生 side effect (資料獲取、訂閱、手動修改 React Dom 等) 的行為都應該使用 useEffect 處理。
-整合了 `componentDidMount`, `componentDidUpdate` `componentWillUnmount`
+整合了 `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`
 
 ```
 useEffect(callback, array)

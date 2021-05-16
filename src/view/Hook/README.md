@@ -6,6 +6,8 @@
 
 [> useEffect 副作用管理](https://github.com/XXuain/react-graphQL-todoList/tree/main/src/view/Hook#useeffect-%E5%89%AF%E4%BD%9C%E7%94%A8%E7%AE%A1%E7%90%86)
 
+
+
 ## useState 狀態管理
 
 ```
@@ -114,6 +116,8 @@ const [updateCount, setUpdateCount] = useState(5);
     console.log('useEffect: ', updateCount); // 印出 6，恭喜~~
   }, [updateCount]);
 ```
+
+
 
 ## useEffect 副作用管理
 

@@ -130,7 +130,7 @@ useEffect(callback, array)
 ```
 
 - `callback` 函式，用於處理 side effect 邏輯
-- ## `array` 根據不同的設定來決定要執行 callback 的時機
+- `array` 根據不同的設定來決定要執行 callback 的時機
 
 ### [ 第一個參數 callback，副作用邏輯 ]
 

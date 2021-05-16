@@ -125,7 +125,7 @@ useEffect(callback, array)
 ```
 
 - `callback` 函式，用於處理 side effect 邏輯
-- `array` 根據不同的設定來決定要執行 callback 的時機
+- ## `array` 根據不同的設定來決定要執行 callback 的時機
 
 ### [ 第一個參數 callback，副作用邏輯 ]
 
@@ -167,3 +167,10 @@ useEffect(() => {
   console.log('after every render')
 })
 ```
+
+### [ Clean up 清理機制 ]
+
+有兩種常見的副作用，一種是不需要清理的另一種是需要的。
+
+- **不需要清理的** 資料請求，DOM 修改，log 紀錄等，useEffect 會自動處理
+- **需要清理的** 訂閱和取消訂閱，事件監聽和取消監聽都是需要清理的

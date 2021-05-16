@@ -2,6 +2,10 @@
 
 各式 hooks 封裝指南 [Hooks.guide](https://hooks-guide.netlify.app/)
 
+[> useState 狀態管理](https://github.com/XXuain/react-graphQL-todoList/tree/main/src/view/Hook#usestate-%E7%8B%80%E6%85%8B%E7%AE%A1%E7%90%86)
+
+[> useEffect 副作用管理]
+
 ## React Hooks 解決的問題
 
 ## useState 狀態管理
@@ -111,4 +115,57 @@ const [updateCount, setUpdateCount] = useState(5);
     // do something
     console.log('useEffect: ', updateCount); // 印出 6，恭喜~~
   }, [updateCount]);
+```
+
+## useEffect 副作用管理
+
+任何會產生 side effect (資料獲取、訂閱、手動修改 React Dom 等) 的行為都應該使用 useEffect 處理。
+整合了 `componentDidMount`, `componentDidUpdate` `componentWillUnmount`
+
+```
+useEffect(callback, array)
+```
+
+- `callback` 函式，用於處理 side effect 邏輯
+- `array` 根據不同的設定來決定要執行 callback 的時機
+
+### [ 第一個參數 callback，副作用邏輯 ]
+
+- **side effect logic** 副作用邏輯處理
+- **clean up** 可以返回一個函式，用於清理工作，相當於 `componentWillUnmount`
+
+```
+useEffect(() => {
+  // 處理 side effect
+  return () => {
+    // Cleanup whatever we did last time
+  }
+})
+```
+
+### [ 第二個參數 array，用於控制執行 ]
+
+- **once** 如果是空 array `[]`，只在元件第一次 render 時執行，相當於 `componentDidMount`
+- **have change** 如果 array 有 state, 或 props 的值，當有改變時就會執行，相當於 `componentDidUpdate`
+- **after every render** 當沒有定義 array 時，他會在第一次及每次 render 都會執行
+
+```
+useEffect(() => {
+ // 只在初次 render 時執行
+  console.log('once')
+}, [])
+```
+
+```
+useEffect(() => {
+ // 會在初次 render 時執行，並且當 array 內的 state 或 props 改變時也會執行
+  console.log('have change')
+}, [state, props])
+```
+
+```
+useEffect(() => {
+ // 他會在第一次及每次 render 都會執行
+  console.log('after every render')
+})
 ```

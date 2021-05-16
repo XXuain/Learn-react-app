@@ -18,7 +18,7 @@ export default function useStateDemo() {
   const clickCountBtn = () => {
     return (
       <div>
-        <h3>你點擊了 {clickCount} 次</h3>
+        <p>你點擊了 {clickCount} 次</p>
         <button onClick={() => setClickCount(clickCount + 1)}>點擊</button>
       </div>
     );
@@ -44,7 +44,7 @@ export default function useStateDemo() {
   const updateCountBtn = () => {
     return (
       <div>
-        <h3>最新的點擊次數是 {updateCount} 次</h3>
+        <p>最新的點擊次數是 {updateCount} 次</p>
         <button onClick={() => updateCountHandle()}>更新點擊</button>
       </div>
     );
@@ -52,6 +52,7 @@ export default function useStateDemo() {
 
   return (
     <div>
+      <h2>useState demo</h2>
       {clickCountBtn()}
       {updateCountBtn()}
     </div>

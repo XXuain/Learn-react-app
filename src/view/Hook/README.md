@@ -2,13 +2,9 @@
 
 各式 hooks 封裝指南 [Hooks.guide](https://hooks-guide.netlify.app/)
 
-[> useState 狀態管理](https://github.com/XXuain/react-graphQL-todoList/tree/main/src/view/Hook#usestate-%E7%8B%80%E6%85%8B%E7%AE%A1%E7%90%86)
-
-[> useEffect 副作用管理](https://github.com/XXuain/react-graphQL-todoList/tree/main/src/view/Hook#useeffect-%E5%89%AF%E4%BD%9C%E7%94%A8%E7%AE%A1%E7%90%86)
-
 <br/>
 
-## useState 狀態管理
+# useState 狀態管理
 
 ```
 const [state, setState] = useState(initState)
@@ -20,7 +16,9 @@ const [state, setState] = useState(initState)
 - `initState` 為初始 state，也可以是一個 `return function`
 - `useState Hook` 可以用不止一次
 
-### [ Init state 的 2 種方式 ]
+<br/>
+
+## [ Init state 的 2 種方式 ]
 
 - 傳入 data，每次 component render 都會跑一次
 - 傳入 return function，只跑第一次 component render 時
@@ -33,8 +31,9 @@ const [state, setState] = useState(initState)
   // 只跑第一次 render 時
   const [clickCount, setClickCount] = useState(() => init());
 ```
+<br/>
 
-### [ Update state 的 2 種方式 ]
+## [ Update state 的 2 種方式 ]
 
 - 傳入 data
 - 傳入 return function，可以獲得最新的 state
@@ -47,8 +46,9 @@ const [state, setState] = useState(initState)
 <button onClick={() => setClickCount((pre) => pre + 1)}>點擊</button>
 <button onClick={() => setUserData((pre) => { ...pre, name: 'Yellow'})}>點擊</button>
 ```
+<br/>
 
-### [ 延伸> 解決 useState 不及時問題 ]
+## [ 延伸> 解決 useState 不及時問題 ]
 
 先來亢亢這個
 
@@ -120,9 +120,10 @@ const [updateCount, setUpdateCount] = useState(5);
 <br/>
 <br/>
 
-## useEffect 副作用管理
+# useEffect 副作用管理
 
 任何會產生 side effect (資料獲取、訂閱、手動修改 React Dom 等) 的行為都應該使用 useEffect 處理。
+
 整合了 `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`
 
 ```
@@ -132,7 +133,9 @@ useEffect(callback, array)
 - `callback` 函式，用於處理 side effect 邏輯
 - `array` 根據不同的設定來決定要執行 callback 的時機
 
-### [ 第一個參數 callback，副作用邏輯 ]
+<br/>
+
+## [ 第一個參數 callback，副作用邏輯 ]
 
 - **side effect logic** 副作用邏輯處理
 - **clean up** 可以返回一個函式，用於清理工作，相當於 `componentWillUnmount`
@@ -145,8 +148,9 @@ useEffect(() => {
   }
 })
 ```
+<br/>
 
-### [ 第二個參數 array，用於控制執行 ]
+## [ 第二個參數 array，用於控制執行 ]
 
 - **once** 如果是空 array `[]`，只在元件第一次 render 時執行，相當於 `componentDidMount`
 - **have change** 如果 array 有 state, 或 props 的值，當有改變時就會執行，相當於 `componentDidUpdate`
@@ -172,8 +176,9 @@ useEffect(() => {
   console.log('after every render')
 })
 ```
+<br/>
 
-### [ Clean up 清理機制 ]
+## [ Clean up 清理機制 ]
 
 有兩種常見的副作用，一種是不需要清理的另一種是需要的。
 

@@ -344,3 +344,52 @@ const memoizedValue = useMemo(callback, array);
 
 - `callback` 計算邏輯函示。
 - `array` 當裡面賦予的值改變時 useMemo 才會執行。
+
+### 返回：
+
+- 返回 callback 的返回值。
+
+```
+const obj1 = { id: '1', name: 'yellow' }
+const obj2 = { id: '2', name: 'kimi', age: 18 }
+const memoizedValue = useMemo(()=> Object.assign(obj1, obj2),[obj1, obj2])
+
+// 使用
+<div>{memoizedValue.age}</div>
+```
+
+<br />
+<br />
+
+# useCallback 記憶值
+
+當父元件傳遞的 props 是 Object 時，父元件的狀態被改變觸發重新渲染，Object 的記憶體位址也會被重新分配，React.memo 會用 shallowly compare 比較 props 中 Object 的記憶體位址，這個比較方式會讓子元件被重新渲染。<br/>
+因此，React 提供了 React.useCallback 這個方法讓 React 在元件重新渲染時，如果 dependencies array 中的值在沒有被修改的情況下，它會幫我們記住 Object，防止 Object 被重新分配記憶體位址。
+
+## [ 基本用法 ]
+
+```
+const memoizedCallback = useCallback(callback, array);
+```
+
+當 useCallback 能夠記住 Object 的記憶體位址，就可以避免父元件重新渲染後，Object 被重新分配記憶體位址，造成 React.memo 的 shallowly compare 發現傳遞的 Object 記憶體位址不同。
+
+### 參數：
+
+- `callback` 計算邏輯函示。
+- `array` 當裡面賦予的值改變時 useMemo 才會執行。
+
+### 返回：
+
+- 返回 callback 本身。
+
+`useCallback(fn, arr)` 等於 `useMemo(()=>fun, arr)`
+
+```
+const obj1 = { id: '1', name: 'yellow' }
+const obj2 = { id: '2', name: 'kimi', age: 18 }
+const memoizedValue = useCallback(()=> Object.assign(obj1, obj2),[obj1, obj2])
+
+// 使用
+<div>{memoizedValue().age}</div>
+```

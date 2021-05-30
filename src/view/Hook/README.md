@@ -35,6 +35,7 @@ const [state, setState] = useState(initState)
   // 只跑第一次 render 時
   const [clickCount, setClickCount] = useState(() => init());
 ```
+
 <br/>
 
 ## [ Update state 的 2 種方式 ]
@@ -50,6 +51,7 @@ const [state, setState] = useState(initState)
 <button onClick={() => setClickCount((pre) => pre + 1)}>點擊</button>
 <button onClick={() => setUserData((pre) => { ...pre, name: 'Yellow'})}>點擊</button>
 ```
+
 <br/>
 
 ## [ 延伸> 解決 useState 不及時問題 ]
@@ -152,6 +154,7 @@ useEffect(() => {
   }
 })
 ```
+
 <br/>
 
 ## [ 第二個參數 array，用於控制執行 ]
@@ -180,6 +183,7 @@ useEffect(() => {
   console.log('after every render')
 })
 ```
+
 <br/>
 
 ## [ Clean up 清理機制 ]
@@ -193,16 +197,19 @@ useEffect(() => {
 <br/>
 
 # useContext 方便使用 context
+
 是 Context.Consumer 的語法糖
 
-## [ Context 資源共享 api ] 
-解決層層傳遞 props 的問題 ( props drilling )，主要通過3個步驟：
-1. 通過 ` React.createContext ` 創建 Context Object。
-2. 使用 ` Context.Provider ` 包裹父元件，傳遞資源使底下 child 可以取用。
-3. 使用 ` Context.Consumer ` 包裹子元件，取得 context 資源。
+## [ Context 資源共享 api ]
 
+解決層層傳遞 props 的問題 ( props drilling )，主要通過 3 個步驟：
+
+1. 通過 `React.createContext` 創建 Context Object。
+2. 使用 `Context.Provider` 包裹父元件，傳遞資源使底下 child 可以取用。
+3. 使用 `Context.Consumer` 包裹子元件，取得 context 資源。
 
 ### 創建
+
 ```
 const testContext = createContext();
 const { Provider, Consumer } = testContext;
@@ -212,23 +219,25 @@ export { testContext }; // 這裡需要將 context 匯出讓 child 取用
 ```
 
 ### 包裹父元件，傳遞資源
+
 ```
 <testContext.Provider value={store}>
     <MyComponents />
 </testContext.Provider>
 ```
 
- ### 包裹子元件，取得資源
- ```
- import { testContext } form '../ParentsComponent'; // 匯入 context
- 
- <testContext.Consumer>
-    { valur=> {
-        // value 是通過 provider 傳下來的資源，這裡是 store
-    }}
+### 包裹子元件，取得資源
+
+```
+import { testContext } form '../ParentsComponent'; // 匯入 context
+
+<testContext.Consumer>
+   { valur=> {
+       // value 是通過 provider 傳下來的資源，這裡是 store
+   }}
 </testContext.Consumer>
- ```
- 
+```
+
  <br/>
  
  ## [ useContext 取得資源 ]
@@ -252,25 +261,30 @@ export { testContext }; // 這裡需要將 context 匯出讓 child 取用
 <br/>
 
 # useReducer 複雜的狀態管理
+
 進階版 useState，兩者都是用來儲存、更新資料。跟 Redux 很像！核心都是 store, action, reducer
 
 ![](https://i.imgur.com/j4GfM8E.png)
 
 ## [ 基本 useReducer ]
+
 ![](https://i.imgur.com/XznH7Gf.jpg)
 
 ### 參數：
+
 - `reducer` 是一個函式，用於處理 action 並更新 state。
 - `initState` 初始化 State。
 - `initAction` 初始化 Action，useReducer 初次執行時被處理。
 
 ### 回傳：
+
 - `state` 狀態
 - `dispatch` 更新 state 的方法，action 作為參數。
 
 <br/>
 
 ### 如何使用：
+
 ```
 const { useState, useReducer } = React;
 
@@ -296,7 +310,7 @@ const Counter = () => {
 
   const increase = () => {dispatch({type: ACTIONS.INCREMENT}) };
   const decrease = () => {dispatch({type: ACTIONS.DECREMENT }) };
- 
+
   return (
     <div>
       <button onClick={decrease} />
@@ -306,3 +320,27 @@ const Counter = () => {
   )
 };
 ```
+
+<br />
+<br />
+
+# useMemo 記憶值
+
+用於效能優化。無關於父元件，主要用在當元件重新渲染時，通過`記憶值` 避免在元件中複雜的程式重複執行，可以減少渲染的耗時。
+<br/>
+適合用於 > 需要複雜計算的場景，例如 `複雜的列表渲染`，深拷貝等等。
+
+> React 官方特別提醒
+> You may rely on useMemo as a performance optimization, not as a semantic guarantee.
+> 因此，不要什麼東西都丟到 useMemo 裡面，在需要優化效能時才引用，否則只是讓 React 處理更多事情，造成更大的負擔。
+
+## [ 基本用法 ]
+
+```
+const memoizedValue = useMemo(callback, array);
+```
+
+### 參數：
+
+- `callback` 計算邏輯函示。
+- `array` 當裡面賦予的值改變時 useMemo 才會執行。

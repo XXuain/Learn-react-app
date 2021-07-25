@@ -3,7 +3,7 @@ import UseEffectDemo from './useEffectDemo';
 import UseContextDemo from './useContextDemo';
 import UseMemoDemo from './useMemoDemo';
 
-export default function Hook() {
+export default function HookTry() {
   return (
     <div>
       <h1>介紹 Hooks ----- </h1>

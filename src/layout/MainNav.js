@@ -17,6 +17,9 @@ export default function MainNav() {
         <Menu.Item key="hook" icon={<LaptopOutlined />}>
           <Link to="/hookTry">HookTry</Link>
         </Menu.Item>
+        <Menu.Item key="render" icon={<LaptopOutlined />}>
+          <Link to="/renderTry">RenderTry</Link>
+        </Menu.Item>
       </Menu>
     </Sider>
   );

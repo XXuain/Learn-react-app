@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+// createSlice 簡化 createReducer 應用
 
 export const counterSlice = createSlice({
   name: 'counter',
@@ -12,7 +13,7 @@ export const counterSlice = createSlice({
     },
     decrement: (state) => {
       state.value -= 1;
-    },
+    }, 
     incrementByAmount: (state, action) => {
       state.value += action.payload;
     }
@@ -25,6 +26,9 @@ export const incrementAsync = (amount) => (dispatch) => {
   }, 1000);
 };
 
-// 匯出 action && reducer
+// 匯出 action
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+// counterSlice.actions.increment() returns an Object of this shape > { type: 'auto-generated unique identifier' }
+
+//  reducer
 export default counterSlice.reducer;

@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+// configureStore like redux's createStore
 import rootReducer from './reducers'; // 從reducers/index取得combineReducers回傳的物件
 
 export default function configureAppStore() {

@@ -29,7 +29,7 @@ const retry = (fn, retriesLeft = 5, interval = 1000) => {
 };
 
 const lazyLoadView = (view) => {
-  const LazyView = React.lazy(() => retry(() => import(/* webpackChunkName: "view-[request]" */ `./view/${view}`)));
+  const LazyView = React.lazy(() => retry(() => import(/* webpackChunkName: "view-[request]" */ `@VIEW/${view}`)));
   return <LazyView />;
 };
 

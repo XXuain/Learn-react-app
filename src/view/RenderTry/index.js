@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
 // import DemoOutput from '../../components/DemoOutput';
-import DemoList from '../../components/DemoList';
-import Button from '../../components/Button';
+import DemoList from '@COM/DemoList';
+import Button from '@COM/Button';
 
 export default function RenderTry() {
   // console.log('APP RUNNING');

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, Switch, Route, useRouteMatch } from 'react-router-dom';
 import { Typography, Menu } from 'antd';
-import CatsArea from '../../components/CatsArea';
-import CatDetail from '../../components/CatDetail';
-import DogArea from '../../components/DogArea';
+import CatsArea from '@COM/CatsArea';
+import CatDetail from '@COM/CatDetail';
+import DogArea from '@COM/DogArea';
 
 export default function RouterTry() {
   const match = useRouteMatch();

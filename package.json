@@ -10,6 +10,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "antd": "^4.15.2",
+    "env-cmd": "^10.1.0",
     "graphql": "^15.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -19,8 +20,12 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
+    "start:dev": "REACT_APP_SECRET_CODE=dddd env-cmd -e dev craco start",
+    "build:dev": "env-cmd -e dev craco build",
+    "start:release": "env-cmd -e release craco start",
+    "build:release": "env-cmd -e release craco build",
+    "start:prod": "env-cmd -e prod craco start",
+    "build:prod": "env-cmd -e prod craco build",
     "test": "craco test",
     "eject": "craco eject"
   },

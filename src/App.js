@@ -40,6 +40,8 @@ const lazyLoadView = (view) => {
 
 const store = configureAppStore();
 
+console.log('REACT_APP_BASEURL >> ', process.env.REACT_APP_SECRET_CODE);
+
 const App = () => (
   <ReduxProvider store={store}>
     <CusApolloProvider>

@@ -1,5 +1,10 @@
 import React from 'react';
+import { Button } from 'antd';
 
 export default function Welcome() {
-  return <div>Welcome</div>;
+  return (
+    <>
+      <Button type="primary">Welcome</Button>
+    </>
+  );
 }

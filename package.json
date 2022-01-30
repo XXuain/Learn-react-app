@@ -21,7 +21,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start:dev": "REACT_APP_SECRET_CODE=dddd env-cmd -e dev craco start",
+    "start:dev": "nodemon -w craco.config.js -w src/plugin/AntDesign/customTheme.less --exec \"craco start\"",
+    "start:dev-cus-env": "REACT_APP_SECRET_CODE=dddd env-cmd -e dev craco start",
     "build:dev": "env-cmd -e dev craco build",
     "start:release": "env-cmd -e release craco start",
     "build:release": "env-cmd -e release craco build",

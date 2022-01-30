@@ -49,6 +49,9 @@
     ]
   },
   "devDependencies": {
-    "@ant-design/icons": "^4.6.2"
+    "@ant-design/icons": "^4.6.2",
+    "nodemon": "^2.0.15",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "webpackbar": "^5.0.2"
   }
 }

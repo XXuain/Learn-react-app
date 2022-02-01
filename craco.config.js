@@ -2,6 +2,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const WebpackBar = require('webpackbar');
 const { whenDev } = require('@craco/craco');
 const CracoAntDesignPlugin = require('craco-antd');
+const FastRefreshCracoPlugin = require('craco-fast-refresh');
 const path = require('path');
 
 module.exports = {
@@ -11,7 +12,8 @@ module.exports = {
       options: {
         customizeThemeLessPath: path.join(__dirname, 'src/plugin/AntDesign/customTheme.less')
       }
-    }
+    },
+    { plugin: FastRefreshCracoPlugin }
   ],
   webpack: {
     alias: {

@@ -23,8 +23,17 @@ module.exports = {
       '@HOOK': '@/hook'
     },
     plugins: [
-      new WebpackBar({ profile: true }),
-      ...whenDev(() => [new BundleAnalyzerPlugin({ openAnalyzer: false })], [])
+      new WebpackBar({ profile: true }), // webpack 進度條
+      ...whenDev(
+        () => [
+          new BundleAnalyzerPlugin({
+            analyzerMode: 'static', // 輸出分析檔案 index.html
+            openAnalyzer: false, // 不自動打開
+            reportFilename: path.resolve(__dirname, `analyzer/index.html`) // 輸出位置
+          })
+        ],
+        []
+      )
     ]
   }
 };

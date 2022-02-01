@@ -1,37 +1,36 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
-// import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import CusApolloProvider from './plugin/apollo';
 
-// import MainLayout from './layout/MainLayout';
+import MainLayout from './layout/MainLayout';
 import configureAppStore from './store';
-import Welcome from './view/Welcome';
 /**
  * 解決 Loading chunk failed
  */
-// const retry = (fn, retriesLeft = 5, interval = 1000) => {
-//   return new Promise((resolve, reject) => {
-//     fn()
-//       .then(resolve)
-//       .catch((error) => {
-//         setTimeout(() => {
-//           if (retriesLeft === 1) {
-//             // reject('maximum retries exceeded');
-//             reject(error);
-//             return;
-//           }
+const retry = (fn, retriesLeft = 5, interval = 1000) => {
+  return new Promise((resolve, reject) => {
+    fn()
+      .then(resolve)
+      .catch((error) => {
+        setTimeout(() => {
+          if (retriesLeft === 1) {
+            // reject('maximum retries exceeded');
+            reject(error);
+            return;
+          }
 
-//           // Passing on "reject" is the important part
-//           retry(fn, retriesLeft - 1, interval).then(resolve, reject);
-//         }, interval);
-//       });
-//   });
-// };
+          // Passing on "reject" is the important part
+          retry(fn, retriesLeft - 1, interval).then(resolve, reject);
+        }, interval);
+      });
+  });
+};
 
-// const lazyLoadView = (view) => {
-//   const LazyView = React.lazy(() => retry(() => import(/* webpackChunkName: "view-[request]" */ `@VIEW/${view}`)));
-//   return <LazyView />;
-// };
+const lazyLoadView = (view) => {
+  const LazyView = React.lazy(() => retry(() => import(/* webpackChunkName: "view-[request]" */ `@VIEW/${view}`)));
+  return <LazyView />;
+};
 
 // const Welcome = React.lazy(() => import('./view/Welcome'));
 // const HookTry = React.lazy(() => import('./view/HookTry'));
@@ -45,8 +44,8 @@ console.log('REACT_APP_BASEURL >> ', process.env.REACT_APP_SECRET_CODE);
 const App = () => (
   <ReduxProvider store={store}>
     <CusApolloProvider>
-      <Welcome />
-      {/* <BrowserRouter>
+      {/* <Welcome /> */}
+      <BrowserRouter>
         <MainLayout>
           <Suspense fallback={<p>Loading...</p>}>
             <Switch>
@@ -62,7 +61,7 @@ const App = () => (
             </Switch>
           </Suspense>
         </MainLayout>
-      </BrowserRouter> */}
+      </BrowserRouter>
     </CusApolloProvider>
   </ReduxProvider>
 );

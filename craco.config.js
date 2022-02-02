@@ -13,7 +13,7 @@ module.exports = {
         customizeThemeLessPath: path.join(__dirname, 'src/plugin/AntDesign/customTheme.less')
       }
     },
-    { plugin: FastRefreshCracoPlugin }
+    { plugin: FastRefreshCracoPlugin } // hot reload
   ],
   webpack: {
     alias: {

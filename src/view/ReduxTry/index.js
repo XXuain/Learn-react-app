@@ -1,4 +1,5 @@
 import React from 'react';
+import Xcom from './Xcom';
 // import { increment } from '../../store/index';
 
 function ReduxTry() {
@@ -8,8 +9,9 @@ function ReduxTry() {
   return (
     <div>
       ReduxTry
+      <Xcom />
     </div>
-  )
+  );
 }
 
-export default ReduxTry
+export default ReduxTry;

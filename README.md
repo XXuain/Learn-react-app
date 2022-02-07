@@ -11,3 +11,7 @@
 #### antd 按需加載以及自定義樣式
 
 [React + antd 4.x + craco-antd 按需加載以及自定義樣式](https://hackmd.io/@yellow/rk464Al0K)
+
+#### Webpack 打包模組拆分
+
+[React + craco + Webpack SplitChunksPlugin 抽離公用模組](https://hackmd.io/@yellow/SJHQfoUCF)
